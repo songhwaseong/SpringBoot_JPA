@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 상세페이지</title>
+</head>
+
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+</style>
+
+<body>
+    <table class="tb_col">
+        <tr>
+            <th>payment_id</th>
+            <th>customer_id</th>
+            <th>staff_id</th>
+            <th>rental_id</th>
+            <th>amount</th>
+            <th>payment_date</th>
+            <th>last_update</th>
+        </tr>
+        <tr th:each="payment : ${paymentList}">
+            <td th:text="${payment.payment_id}">  </td>
+            <td th:text="${payment.customer_id}">  </td>
+            <td th:text="${payment.staff_id}">  </td>
+            <td th:text="${payment.rental_id}">  </td>
+            <td th:text="${payment.amount}">  </td>
+            <td th:text="${payment.payment_date}">  </td>
+            <td th:text="${payment.last_update}">  </td>
+        </tr>
+    </table>
+
+</body>
+</html>

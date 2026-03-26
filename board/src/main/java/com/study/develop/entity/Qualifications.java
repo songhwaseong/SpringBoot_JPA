@@ -1,27 +1,37 @@
 package com.study.develop.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Qualifications {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private String title;
-
-    private String content;
-
-    private String filename;
-
-    private String filepath;
-
+    private int id	              ;
+    private Integer obligfldcd	  ;
+    private String seriescd		  ;
+    private String jmcd		      ;
+    private String mdobligfldnm	  ;
+    private String seriesnm		  ;
+    private int mdobligfldcd	  ;
+    private String obligfldnm	  ;
+    private String qualgbcd		  ;
+    private String jmfldnm		  ;
+    private String qualgbnm		  ;
 }
 
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+        <meta charset="UTF-8">
+        <title>게시물 상세페이지</title>
+    </head>
+
+    <body>
+        <div class="container py-1"> <!-- 부트스트랩 적용 -->
+            <table class = "table"> <!-- 부트스트랩 적용 -->
+                <thead class = "table-info"> <!-- 부트스트랩 적용 -->
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>Continent</th>
+                        <th>Region</th>
+                        <th>SurfaceArea</th>
+                        <th>IndepYear</th>
+                        <th>Population</th>
+                        <th>LifeExpectancy</th>
+                        <th>GNP</th>
+                        <th>GNPOld</th>
+                        <th>LocalName</th>
+                        <th>GovernmentForm</th>
+                        <th>HeadOfState</th>
+                        <th>Capital</th>
+                        <th>Code2</th>
+                    </tr>
+                    <tr th:each="country : ${countryList}">
+                        <td th:text="${country.Code}"></td>
+                        <td th:text="${#strings.abbreviate(country.Name,8)}"></td>
+                        <td th:text="${country.Continent}"></td>
+                        <td th:text="${#strings.abbreviate(country.Region,8)}"></td>
+                        <td th:text="${#numbers.formatInteger(country.SurfaceArea, 0, 'COMMA')}"></td>
+                        <td th:text="${country.IndepYear}"></td>
+                        <td th:text="${#numbers.formatInteger(country.population, 0, 'COMMA')}"></td>
+                        <td th:text="${country.LifeExpectancy}"></td>
+                        <td th:text="${#numbers.formatInteger(country.GNP, 0, 'COMMA')}"></td>
+                        <td th:text="${#numbers.formatInteger(country.GNPOld, 3, 'COMMA')}"></td>
+                        <td th:text="${#strings.abbreviate(country.LocalName,8)}"></td>
+                        <td th:text="${#strings.abbreviate(country.GovernmentForm,8)}"></td>
+                        <td th:text="${#strings.abbreviate(country.HeadOfState,8)}"></td>
+                        <td th:text="${country.Capital}"></td>
+                        <td th:text="${country.Code2}"></td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </body>
+</html>

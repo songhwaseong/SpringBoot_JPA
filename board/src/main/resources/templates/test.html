@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>7
+
+    </head>
+    <script>
+
+        $(function(){
+            getApi();
+            $('#btn_add').on('click',function(e){
+                e.preventDefault();
+                appendTest('1','2','3');
+            });
+            $(document).on('click','a',function(){
+               $(this).parent().remove();
+            });
+        });
+
+        function getApi(){
+            $.get("http://localhost:8080/api/testApi",
+                // 서버가 필요한 정보를 같이 보냄.
+                {},
+                // 응답이 오면 호출되는 콜백 함수
+                function(data, status) {
+                    console.log('=============> ', data)// 전송받은 데이터와 전송 성공 여부를 보여줌.
+                    console.log('=============> ', status)// 전송받은 데이터와 전송 성공 여부를 보여줌.
+                    data.forEach(function(t){
+                        if(t.jmfldnm.indexOf('기사') > -1){
+                            appendTest(t.jmcd, t.jmfldnm, t.qualgbnm)
+                        }
+                    });
+                }
+            );
+        }
+        function appendTest(jmcd, jmfldnm, qualgbnm ){
+            let btn = $("<button>");
+            btn.addClass('list-group-item').addClass('list-group-item-action');
+            btn.appendTo('.list-group');
+            btn.text('('+jmcd+')'+jmfldnm)
+            let span = $("<span>");
+            span.addClass('badge').addClass('text-bg-primary').addClass('rounded-pill');
+            span.text(qualgbnm)
+            span.appendTo(btn);
+            let a = $("<a>");
+            a.addClass('badge').addClass('text-bg-primary').addClass('rounded-pill');
+            a.text('X');
+            a.appendTo(btn);
+        }
+    </script>
+    <body>
+        <div class="container">
+            <div class="list-group">
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    The current button
+                    <span class="badge text-bg-primary rounded-pill">14</span>
+                    <a class="badge text-bg-primary rounded-pill">X</a>
+                </button>
+            </div>
+            <button type="button" id="btn_add">+</button>
+        </div>
+    </body>
+</html>

@@ -1,26 +1,32 @@
 package com.study.develop.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Actor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int actor_id;
 
-    private String title;
+    private String first_name;
 
-    private String content;
+    private String last_name;
 
-    private String filename;
+    @LastModifiedDate
+    private LocalDateTime last_update; // 수정 시간
 
-    private String filepath;
 
 }
 

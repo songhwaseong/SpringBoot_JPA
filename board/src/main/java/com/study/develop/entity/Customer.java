@@ -1,26 +1,47 @@
 package com.study.develop.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int customer_id;
 
-    private String title;
+    private int store_id;
 
-    private String content;
+    private String first_name;
 
-    private String filename;
+    private String last_name;
 
-    private String filepath;
+    private String email;
+
+    private int address_id;
+
+    private int active;
+
+    @CreatedDate
+    private LocalDateTime create_date; // 생성 시간
+
+    @LastModifiedDate
+    private LocalDateTime last_update; // 수정 시간
+
 
 }
 

@@ -1,7 +1,9 @@
 package com.study.develop.contorller;
 
 import com.study.develop.entity.Board;
+import com.study.develop.service.ActorService;
 import com.study.develop.service.BoardService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,27 +15,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
 
+@Slf4j
 @Controller
 public class BoardController {  //localhost:8080/board/write
 
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private ActorService actorService;
 
     @GetMapping("/board/write")
     public String boardWriteForm(){
 
-        List<String> testList = new ArrayList<String>();
-        testList.add("test1");
-        testList.add("test2");
-        testList.add("test3");
-        testList.add("test4");
-        String a = testList.stream().filter(p -> p.startsWith("S")).findAny().orElse("aaaa");
-        System.out.print(a);
-        System.out.print(a);
-        System.out.print(a);
+        log.info("======>>>>> write");
         return "boardWrite";
     }
 
@@ -67,6 +62,8 @@ public class BoardController {  //localhost:8080/board/write
     @GetMapping("/board/view")
     public String boardDetail(Model model, Integer id){
         model.addAttribute("board", boardService.boardDetail(id));
+        model.addAttribute("actor", actorService.getActor(1));
+        model.addAttribute("actorList", actorService.getActorList());
 
         return "boardView";
     }

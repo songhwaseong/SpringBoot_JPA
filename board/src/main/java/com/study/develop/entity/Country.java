@@ -1,6 +1,7 @@
 package com.study.develop.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity
@@ -8,19 +9,38 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Country {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String Code			 ;
 
-    private String title;
+    private String Name			 ;
 
-    private String content;
+    private String Continent		 ;
 
-    private String filename;
+    private String Region			 ;
 
-    private String filepath;
+    private int SurfaceArea			 ;
+
+    private Integer IndepYear		 ;
+
+    private int Population			 ;
+
+    private Double LifeExpectancy		 ;
+
+    private double GNP			 ;
+
+    private Double GNPOld			 ;
+
+    private String LocalName		 ;
+
+    private String GovernmentForm		 ;
+
+    private String HeadOfState		 ;
+
+    private Integer Capital			 ;
+
+    private String Code2			 ;
 
 }
 

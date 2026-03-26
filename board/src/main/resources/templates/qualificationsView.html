@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 상세페이지</title>
+</head>
+
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+</style>
+
+<body>
+    <table class="tb_col">
+        <tr>
+            <th>obligfldcd</th>
+            <th>seriescd</th>
+            <th>jmcd</th>
+            <th>mdobligfldnm</th>
+            <th>seriesnm</th>
+            <th>mdobligfldcd</th>
+            <th>obligfldnm</th>
+            <th>qualgbcd</th>
+            <th>jmfldnm</th>
+            <th>qualgbnm</th>
+        </tr>
+        <tr th:each="map : ${lstMap}">
+            <td th:text="${map.obligfldcd}"></td>
+            <td th:text="${map.seriescd}"></td>
+            <td th:text="${map.jmcd}"></td>
+            <td th:text="${map.mdobligfldnm}"></td>
+            <td th:text="${map.seriesnm}"></td>
+            <td th:text="${map.mdobligfldcd}"></td>
+            <td th:text="${map.obligfldnm}"></td>
+            <td th:text="${map.qualgbcd}"></td>
+            <td th:text="${map.jmfldnm}"></td>
+            <td th:text="${map.qualgbnm}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

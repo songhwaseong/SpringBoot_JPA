@@ -1,26 +1,45 @@
 package com.study.develop.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int payment_id	     ;
 
-    private String title;
+    private int customer_id	     ;
 
-    private String content;
+    private int staff_id	     ;
 
-    private String filename;
+    private Integer rental_id	     ;
 
-    private String filepath;
+    private double amount	     ;
+
+    @CreatedDate
+    private Timestamp payment_date;
+
+    @LastModifiedDate
+    private Timestamp last_update;
+
+
 
 }
 

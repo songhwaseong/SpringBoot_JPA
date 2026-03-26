@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 상세페이지</title>
+</head>
+
+<style>
+    .layout {
+        width : 500px;
+        margin : 0 auto;
+        margin-top : 40px;
+    }
+</style>
+
+<body>
+    <table class="tb_col">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>countryCode</th>
+            <th>district</th>
+            <th>population</th>
+        </tr>
+        <tr th:each="city : ${cityList}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td th:text="${city.countryCode}"></td>
+            <td th:text="${city.district}"></td>
+            <td th:text="${#numbers.formatInteger(city.population, 0, 'COMMA')}"></td>
+        </tr>
+    </table>
+
+
+</body>
+</html>

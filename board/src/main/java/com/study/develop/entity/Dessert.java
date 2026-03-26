@@ -1,27 +1,29 @@
 package com.study.develop.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Dessert {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    private String title;
-
-    private String content;
-
-    private String filename;
-
-    private String filepath;
-
+    private int id	        ;
+    private int price	        ;
+    private int quantity	        ;
+    private int stock	        ;
+    private String name	        ;
+    private String image	    ;
+    private String category         ;
+    private String desc         ;
+    private String regDate         ;
 }
 
 
